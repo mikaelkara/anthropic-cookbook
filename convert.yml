@@ -1,0 +1,24 @@
+name: Convert all IPYNB to MD
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: List all IPYNB files
+        run: |
+          find . -name "*.ipynb" > ipynb_files.txt
+
+      - name: Convert IPYNB to MD
+        uses: SFLScientific/IPYNB_to_MD@1.0
+        with:
+          ipynb-path: $(cat ipynb_files.txt)
+          md-path: 'docs'
