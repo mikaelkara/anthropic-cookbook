@@ -21,4 +21,4 @@ jobs:
         uses: SFLScientific/IPYNB_to_MD@1.0
         with:
           ipynb-path: $(cat ipynb_files.txt)
-          md-path: 'docs'
+          md-path: 'misc'
